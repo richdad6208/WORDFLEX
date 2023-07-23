@@ -1,0 +1,30 @@
+{
+  "name": "wordflex",
+  "version": "1.0.0",
+  "description": "명언웹입니다",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richdad6208/wordFlex.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richdad6208/wordFlex/issues"
+  },
+  "homepage": "https://github.com/richdad6208/wordFlex#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.9",
+    "@babel/node": "^7.22.6"
+  }
+}
