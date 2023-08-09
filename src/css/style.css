@@ -1,36 +1,11 @@
 :root {
-  --crl-primary: hsl(303, 60%, 63%);
-  --crl-secondary: hsl(124, 60%, 5%);
-  --crl-accent: hsl(303, 60%, 45%);
-
+  --crl-primary-100: hsl(357, 92.44%, 46.67%);
   --crl-neutral-100: hsl(0, 0%, 100%);
   --crl-neutral-900: hsl(0, 0%, 0%);
-  --crl-background: hsl(124, 61%, 10%);
-  --crl-text: hsl(120, 60%, 96%);
-
-  --ff-primary: "Montserrat", "Noto Sans KR", sans-serif;
-  --ff-accent: "Fugaz One", cursive;
-
-  --fs-100: 0.75rem;
-  --fs-200: 0.9rem;
-  --fs-300: 1rem;
-  --fs-400: 1.5rem;
-  --fs-500: 2rem;
-  --fs-600: 2.5rem;
-  --fs-700: 3rem;
-  --fs-800: 4rem;
-  --fs-900: 5rem;
-
-  --size-100: 0.75rem;
-  --size-200: 0.9rem;
-  --size-300: 1rem;
-  --size-400: 2rem;
-  --size-500: 3rem;
-  --size-600: 5rem;
-  --size-700: 7rem;
-  --size-800: 9rem;
-  --size-900: 11rem;
+  --ff-primary: "Noto Sans KR", sans-serif;
+  --ff-logo: "Bebas Neue", sans-serif;
 }
+
 /* Box sizing rules */
 *,
 *::before,
@@ -42,9 +17,9 @@
 * {
   margin: 0;
   padding: 0;
+  font: inherit;
   color: inherit;
   text-decoration: inherit;
-  font: inherit;
 }
 
 /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
@@ -58,14 +33,9 @@ html:focus-within {
   scroll-behavior: smooth;
 }
 
-/* Set core body defaults */
-html {
-  height: 100vh;
-}
+html,
 body {
-  min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
+  height: 100%;
 }
 
 /* A elements that don't have a class get default styles */
@@ -96,33 +66,46 @@ svg {
     scroll-behavior: auto !important;
   }
 }
+
+/* general style */
 body {
+  color: var(--crl-neutral-100);
+  background-color: var(--crl-neutral-900);
   font-family: var(--ff-primary);
-  background-color: var(--crl-background);
-  color: var(--crl-text);
 }
-
-/* primary-header */
-.nav-wrapper {
-  display: flex;
-  justify-content: space-between;
-}
-/* logo */
 .logo {
-  font-family: var(--ff-accent);
-  font-size: var(--fs-600);
+  color: var(--crl-primary-100);
+  font-size: 60px;
+  font-weight: bold;
+  letter-spacing: -4px;
 }
-
+/* button */
+.button {
+  display: inline-block;
+  background-color: var(--crl-primary-100);
+  padding: 0.5em 0.5em;
+}
 /* utility */
-
+.sr-only {
+  position: absolute;
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
 .container {
   --max-width: 1300px;
-  --padding: 1rem;
+  --padding: 2rem;
 
   width: min(var(--max-width), 100% - 2 * var(--padding));
   margin-inline: auto;
 }
-
-.padding-block-400 {
-  padding-block: var(--size-400);
+.flex-justify-between {
+  display: flex;
+  justify-content: space-between;
 }
