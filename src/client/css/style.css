@@ -1,43 +1,21 @@
-:root {
-  --crl-primary-100: hsl(357, 92.44%, 46.67%);
-  --crl-neutral-100: hsl(0, 0%, 100%);
-  --crl-neutral-200: hsl(0, 0%, 90%);
-  --crl-neutral-300: hsl(0, 0%, 80%);
-  --crl-neutral-400: hsl(0, 0%, 20%);
-  --crl-neutral-900: hsl(0, 0%, 0%);
-  --ff-primary: "Noto Sans KR", sans-serif;
-  --ff-logo: "Bebas Neue", sans-serif;
-
-  --fs-100: 0.7rem;
-  --fs-200: 0.8rem;
-  --fs-300: 0.9rem;
-  --fs-400: 1rem;
-  --fs-500: 1.2rem;
-  --fs-550: 1.7rem;
-  --fs-600: 2rem;
-  --fs-700: 2.5rem;
-  --fs-800: 3rem;
-  --fs-900: 4rem;
-
-  --size-100: 0.4rem;
-  --size-200: 0.6rem;
-  --size-300: 0.8rem;
-  --size-400: 1rem;
-  --size-500: 2rem;
-  --size-600: 3rem;
-  --size-700: 5rem;
-  --size-800: 7rem;
-  --size-900: 9rem;
+@font-face {
+  font-family: "SUITE-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/SUITE-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
 }
-
-/* Box sizing rules */
+:root {
+  --ff-primary: "SUITE-Regular", serif;
+  --fw-light: 400;
+  --fw-regular: 500;
+  --fw-bold: 700;
+}
 *,
-*::before,
-*::after {
+*::after,
+*::before {
   box-sizing: border-box;
 }
-
-/* Remove default margin */
 * {
   margin: 0;
   padding: 0;
@@ -45,263 +23,42 @@
   color: inherit;
   text-decoration: inherit;
 }
-
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
+ul {
   list-style: none;
 }
 
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-html,
+/* general styling */
 body {
-  height: 100%;
-}
-
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Make images easier to work with */
-img,
-picture,
-svg {
-  max-width: 100%;
-  display: block;
-}
-
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* general style */
-body {
-  color: var(--crl-neutral-100);
-  background-color: var(--crl-neutral-900);
+  font-weight: var(--fw-bold);
   font-family: var(--ff-primary);
-  text-align: center;
-  font-size: 1.6rem;
-  font-weight: 400;
-  line-height: 1.4;
-  word-break: keep-all;
+  height: 100vh;
+  background-image: url(../../images/bird.jpg);
+  background-size: contain;
+  background-position: -15rem 11rem;
 }
-section:not(:nth-of-type(1)) {
-  border-bottom: 5px solid gray;
-}
-.logo {
-  color: var(--crl-primary-100);
-  font-size: 2.2rem;
-  font-weight: bold;
-  letter-spacing: -4px;
-}
-.section__title {
-  font-size: 3rem;
-  font-weight: bold;
-}
-@media (max-width: 824px) {
-  .logo {
-    font-size: 1.8rem;
-  }
-  body {
-    font-size: 1.05rem;
-  }
-  .section__title {
-    font-size: 1.7rem;
-  }
-}
-/* banner */
-.banner {
-  width: 90%;
-  background: #b42c7c;
-  background: radial-gradient(at center top, #b42c7c, #130124);
-  margin-inline: auto;
-}
-.banner__title {
-  font-size: 1.1rem;
-}
-.banner__body {
-  font-size: 0.9rem;
-}
-.banner__link {
-  font-size: 1.1rem;
-  color: rgb(0, 119, 255);
-}
-/* service */
-.service {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
-}
-.service__text-wrapper {
-  text-align: left;
-}
-/* question */
-.question__list {
-  text-align: left;
-}
-.question__item {
-  display: block;
-  padding: 1em 1em;
-  background: var(--crl-neutral-400);
-  position: relative;
-  transition: all 0.5s;
-}
-.question__item::after {
-  content: "\002b";
-  position: absolute;
-  font-size: 4rem;
-  right: 3%;
-  top: 50%;
-  translate: 0 -50%;
-}
-@media (max-width: 960px) {
-  .question__item {
-    font-size: 1.2rem;
-  }
-  .question__item::after {
-    font-size: 1.5rem;
-  }
-}
-.question__sub-wrapper {
-  display: none;
-  background: var(--crl-neutral-400);
-  padding: 1em 1em;
-  border-top: 1px solid black;
-  transition: all 1s;
-}
-.showing {
-  display: block;
-  animation: showing 0.3s;
-  transform-origin: top;
-}
-@keyframes showing {
-  from {
-    scale: 1 0;
-  }
-  to {
-    scale: 1 1;
-  }
-}
-.question__sub__link {
-  text-decoration: underline;
-}
-/* footer */
-.footer {
-  font-size: 0.95rem;
-  color: var(--crl-neutral-300);
-  text-align: left;
-}
-.footer-nav {
-  text-decoration: underline;
-  columns: 3;
-}
-@media (max-width: 700px) {
-  .footer-nav {
-    columns: 2;
-  }
-}
-@media (max-width: 472px) {
-  .footer-nav {
-    columns: 1;
-  }
-}
-.external__link {
-  font-size: 0.8rem;
-  text-decoration: underline;
-}
-/* form */
-.start-wrapper {
+.nav-list {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 0.7rem;
 }
-.start-wrapper p {
-  flex-basis: 100%;
-  font-size: var(--fs-500);
-  margin-bottom: var(--size-200);
+.nav-list a {
+  padding: 1em;
 }
-/* input */
-input[data-type="writing"] {
-  background: rgba(0, 0, 0, 0.473);
-  padding: 0 0.6em;
-  border: 1px solid rgba(255, 255, 255, 0.404);
-  border-radius: 5px;
-  width: min(500px, 60%);
+.nav-list a:hover {
+  background: whitesmoke;
 }
-@media (max-width: 618px) {
-  input[data-type="writing"] {
-    padding: 0.5em 0 0.5em 1em;
-    width: 90%;
-  }
-}
-input[data-type="writing"]::placeholder {
-  font-size: var(--fs-400);
-  color: var(--crl-neutral-300);
-}
-/* button */
-.button {
-  display: inline-flex;
-  align-items: center;
-  background-color: var(--crl-primary-100);
-  padding: 0.5em 0.9em;
-  border: 0;
-  border-radius: 5px;
-  line-height: 1;
-}
-.primary-header .button-wrapper {
-  font-size: var(--fs-300);
-  align-self: center;
-}
-.start-wrapper .button {
-  font-size: var(--fs-550);
-}
-
-/* utility */
-.sr-only {
-  position: absolute;
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-.container {
-  --max-width: 1250px;
-  --padding: 2rem;
-
-  width: min(var(--max-width), 100% - 2 * var(--padding));
-  margin-inline: auto;
-}
-.flex-justify-between {
+/* header */
+.header-wrapper {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
-
-.padding-block-300 {
-  padding-block: var(--size-300);
+.logo {
+  font-size: 2em;
 }
-.underline {
-  text-decoration: underline;
+/* utility */
+.container {
+  --max-width: 1200px;
+  --padding: 1rem;
+  width: min(var(--max-width), 100% - var(--padding) * 2);
+  margin-inline: auto;
 }

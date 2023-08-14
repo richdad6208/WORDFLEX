@@ -5,7 +5,7 @@ export const getLogin = (req, res) => {
   res.render("user/login");
 };
 export const getResister = (req, res) => {
-  res.render("user/register");
+  res.render("user/register.ejs");
 };
 export const postResister = async (req, res) => {
   let { name, password, passwordConfirm, email, address, realName } = req.body;
