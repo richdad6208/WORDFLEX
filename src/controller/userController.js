@@ -4,15 +4,16 @@ import bcrypt from "bcrypt";
 export const getLogin = (req, res) => {
   res.render("user/login");
 };
-export const getResister = (req, res) => {
-  res.render("user/register.ejs");
+export const getRegister = (req, res) => {
+  res.render("user/register");
 };
-export const postResister = async (req, res) => {
+export const postRegister = async (req, res) => {
+  console.log("hi");
   let { name, password, passwordConfirm, email, address, realName } = req.body;
   console.log(password.__proto__);
   if (password !== passwordConfirm) {
     return res.render("user/register", {
-      errorMessage: "비밀번호가 일치하지 않습니다",
+      errorMessagePassword: "비밀번호가 일치하지 않습니다",
     });
   }
   password = await bcrypt.hashSync(password, 5);
@@ -20,7 +21,7 @@ export const postResister = async (req, res) => {
   if (checkName) {
     return res
       .status(404)
-      .render("user/register", { errorMessage: "아이디가 존재합니다" });
+      .render("user/register", { errorMessageId: "아이디가 존재합니다" });
   }
 
   const user = await User.create({

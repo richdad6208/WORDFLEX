@@ -6,21 +6,10 @@
     <!--============================================-->
     <section class="register">
       <form method="post">
-        <p>회원가입</p>
+        <p>로그인</p>
         <input type="text" name="name" placeholder="아이디" />
-        <% if (errorMessageId) { %>
-        <p><%= errorMessageId %></p>
-        <% } %>
         <input type="password" name="password" placeholder="비밀번호" />
-        <input
-          type="password"
-          name="passwordConfirm"
-          placeholder="비밀번호 확인"
-        />
-        <input type="email" name="email" placeholder="이메일" />
-        <input type="text" name="realName" placeholder="이름" />
-        <input type="address" name="address" placeholder="주소" />
-        <button type="submit" class="btn btn-primary">회원가입</button>
+        <button type="submit" class="btn btn-primary">로그인</button>
       </form>
     </section>
     <!--============================================-->
