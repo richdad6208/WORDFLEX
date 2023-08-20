@@ -1,8 +1,12 @@
 extends ../base
 block content
     div.container
-        form(action="")
+        form(method="POST")
             p 로그인
-            input(type="text" placeholder="아이디를 입력하세요")
-            input(type="password" placeholder="비밀번호를 입력하세요")
+            input(type="text" name="userName" placeholder="아이디를 입력하세요" required minlength="1" maxlength="15")
+            if errorMessageId 
+                span.error=errorMessageId
+            input(type="password" name="password" placeholder="비밀번호를 입력하세요" required minlength="1" maxlength="15")
+            if errorMessagePassword 
+                span.error=errorMessagePassword
             button 로그인 

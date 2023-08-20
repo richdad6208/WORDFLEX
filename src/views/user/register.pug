@@ -2,11 +2,17 @@ extends ../base
 block content
     div.container
         form(method="POST")
-            p 회원가입
-            input(type="text" name="username" placeholder="아이디를 입력하세요")
-            input(type="password" name="password" placeholder="비밀번호를 입력하세요")
-            input(type="password" name="passwordConfirm" placeholder="비밀번호를 다시 입력하세요")
-            input(type="text" name="realName" placeholder="이름을 입력하세요")
+            h2 회원가입
+            input(type="text" name="userName" placeholder="아이디를 입력해주세요 (6~15자)" required minlength="1" maxlength="15"  )
+            if errorMessageId
+                span.error=errorMessageId
+            input(type="password" name="password" placeholder="비밀번호를 입력하세요 (6~15자)" required minlength="1" maxlength="15")
+            input(type="password" name="passwordConfirm" placeholder="비밀번호를 다시 입력하세요 (6~15자)" required minlength="1" maxlength="15")
+            if errorMessagePassword
+                span.error=errorMessagePassword
+            input(type="text" name="realName" placeholder="이름을 입력하세요 (2~10자)" required minlength="1" maxlength="10")
             input(type="email" name="email"
-            placeholder="이메일을 입력하세요")
+            placeholder="이메일을 입력하세요" required minlength="1" maxlength="20")
+            if errorMessageEmail
+                span.error=errorMessageEmail
             button(type="submit") 회원가입 

@@ -4,31 +4,53 @@ import bcrypt from "bcrypt";
 export const getLogin = (req, res) => {
   res.render("user/login");
 };
+export const postLogin = async (req, res) => {
+  const { userName, password } = req.body;
+
+  const user = await User.findOne({ userName });
+  if (!user) {
+    return res.status(404).render("user/login", {
+      errorMessageId: "계정이 존재하지 않습니다",
+    });
+  }
+
+  const comparePassword = await bcrypt.compare(password, user.password);
+  if (!comparePassword) {
+    return res.status(404).render("user/login", {
+      errorMessagePassword: "비밀번호가 일치하지 않습니다",
+    });
+  }
+  return res.redirect("/");
+};
 export const getRegister = (req, res) => {
-  res.render("user/register");
+  res.redirect("/");
 };
 export const postRegister = async (req, res) => {
-  console.log("hi");
-  let { name, password, passwordConfirm, email, address, realName } = req.body;
-  console.log(password.__proto__);
+  let { userName, password, passwordConfirm, email, realName } = req.body;
   if (password !== passwordConfirm) {
-    return res.render("user/register", {
+    return res.status(404).render("user/register", {
       errorMessagePassword: "비밀번호가 일치하지 않습니다",
     });
   }
   password = await bcrypt.hashSync(password, 5);
-  const checkName = await User.exists({ name });
+
+  const checkName = await User.exists({ userName });
   if (checkName) {
     return res
       .status(404)
-      .render("user/register", { errorMessageId: "아이디가 존재합니다" });
+      .render("user/register", { errorMessageId: "아이디가 중복됩니다" });
+  }
+  const checkEmail = await User.exists({ email });
+  if (checkEmail) {
+    return res
+      .status(404)
+      .render("user/register", { errorMessageEmail: "이메일이 중복됩니다" });
   }
 
   const user = await User.create({
-    name,
+    userName,
     password,
     email,
-    address,
     realName,
   });
   console.log(user);
