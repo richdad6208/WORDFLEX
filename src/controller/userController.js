@@ -20,10 +20,18 @@ export const postLogin = async (req, res) => {
       errorMessagePassword: "비밀번호가 일치하지 않습니다",
     });
   }
+  req.session.user = user;
+  req.session.save();
   return res.redirect("/");
 };
-export const getRegister = (req, res) => {
+export const getLogout = (req, res) => {
+  req.session.user = null;
+  req.session.save();
+  res.locals.user = null;
   res.redirect("/");
+};
+export const getRegister = (req, res) => {
+  res.render("user/register");
 };
 export const postRegister = async (req, res) => {
   let { userName, password, passwordConfirm, email, realName } = req.body;
@@ -75,4 +83,9 @@ export const githubLogin = async (req, res) => {
   // console.log(settingQuery);
   // return res.redirect(`${baseUrl}${query}`);
   return res.end();
+};
+
+export const getProfile = (req, res) => {
+  console.log(req);
+  res.render("user/profile");
 };

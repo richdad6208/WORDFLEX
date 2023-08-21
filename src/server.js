@@ -3,7 +3,7 @@ import express from "express";
 import globalRouter from "./router/globalRouter";
 import userRouter from "./router/userRouter";
 import "./db.js";
-import { sayHi } from "./middleware";
+import { isAuthenticated } from "./middleware";
 import morgan from "morgan";
 import session from "express-session";
 
@@ -19,14 +19,13 @@ app.use(express.static("src"));
 app.use(
   session({
     secret: "keyboard cat",
-    resave: true,
+    resave: false,
     saveUninitialized: true,
-    cookie: { secure: true },
   })
 );
 
 app.use("/assets", express.static("assets"));
-app.use("/", sayHi, globalRouter);
+app.use("/", isAuthenticated, globalRouter);
 app.use("/user", userRouter);
 
 const PORT = "4000";
