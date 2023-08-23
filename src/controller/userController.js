@@ -86,6 +86,6 @@ export const githubLogin = async (req, res) => {
 };
 
 export const getProfile = (req, res) => {
-  console.log(req);
-  res.render("user/profile");
+  const id = req.session.user._id;
+  res.render("user/profile", { id });
 };

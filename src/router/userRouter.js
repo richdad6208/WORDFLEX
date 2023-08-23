@@ -1,6 +1,6 @@
 import express from "express";
 import { getProfile } from "../controller/userController";
-const buserRouter = express.Router();
+const userRouter = express.Router();
 
 userRouter.route("/").get((req, res) => {
   res.send("user");
